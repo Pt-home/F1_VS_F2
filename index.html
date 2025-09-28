@@ -34,6 +34,14 @@
     input[type="color"]::-moz-color-swatch{ border:1px solid #c8c8cc; border-radius:6px; }
     .checkline { display:flex; align-items:center; gap:8px; margin-top:8px; cursor:pointer; user-select:none; }
     .checkline input { margin:0; }
+
+    /* status badge styles (match main.js) */
+    .status-badge { display:inline-flex; align-items:center; gap:6px; font-size:12px; color:#666; }
+    .status-badge .dot { width:8px; height:8px; border-radius:50%; background:#bbb; display:inline-block; }
+    .status-badge .dot.running { background:#ffb000; }
+    .status-badge .dot.ok      { background:#19a974; }
+    .status-badge .dot.warn    { background:#ff7f50; }
+    .status-badge .dot.err     { background:#d93a3a; }
   </style>
 </head>
 <body>
@@ -47,7 +55,7 @@
           <option>F1_VS_INDEX</option><option>F2_VS_INDEX</option>
           <option>INDEX_VS_F1</option><option>INDEX_VS_F2</option>
           <option>F1_VS_X1</option><option>F1_VS_X2</option>
-          <option>F2_VS_X1</option><option>F2_VS_X2</option>
+          <option>F2_VS_X1</option><option>F2_VС_X2</option>
           <option>X1_VS_F1</option><option>X1_VS_F2</option>
           <option>X2_VS_F1</option><option>X2_VS_F2</option>
           <option>F1F2_VS_F1</option><option>F1F2_VS_F2</option>
@@ -58,8 +66,8 @@
         <input id="title" name="title" type="text" value="F1_vs_F2 Web Playground"/>
         <label for="notes">Notes</label>
         <textarea id="notes" name="notes"></textarea>
-        <label class="checkline" for="exact_toggle">
-          <input id="exact_toggle" name="exact_toggle" type="checkbox"/>
+        <label class="checkline" for="exact_always">
+          <input id="exact_always" name="exact_always" type="checkbox"/>
           <span>Exact render always</span>
         </label>
       </section>
@@ -189,14 +197,13 @@
 
     <main>
       <header>
-		  <h1>F1_vs_F2 Playground</h1>
-		  <span id="status" style="font-size:12px;color:#666;margin-left:8px">Ready</span>
-		  <a href="./F1_vs_F2_Help.pdf" download
-			 style="margin-left:auto;font-size:12px;color:#0a5; text-decoration:none; border:1px solid #0a5; padding:4px 8px; border-radius:8px;">
-			Help (PDF)
-		  </a>
-		  
-		</header>
+        <h1>F1_vs_F2 Playground</h1>
+        <span id="status" class="status-badge"><span class="dot"></span><span class="txt">Ready</span></span>
+        <a href="./F1_vs_F2_Help.pdf" download
+           style="margin-left:auto;font-size:12px;color:#0a5; text-decoration:none; border:1px solid #0a5; padding:4px 8px; border-radius:8px;">
+          Help (PDF)
+        </a>
+      </header>
 
       <div class="content">
         <div class="stage">
